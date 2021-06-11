@@ -4,5 +4,6 @@ using UnityEngine;
 
 public interface IAIState
 {
+    int actionstateweight { get; set; }
     IAIState DoState(UmbertoAINew npc);
 }

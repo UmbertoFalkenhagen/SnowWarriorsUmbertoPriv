@@ -6,6 +6,12 @@ using Random = UnityEngine.Random;
 
 public class WanderState : IAIState
 {
+    public int actionstateweight { get; set; }
+
+    public WanderState(int weight)
+    {
+        actionstateweight = weight;
+    }
 
     public IAIState DoState(UmbertoAINew npc)
     {
@@ -25,7 +31,9 @@ public class WanderState : IAIState
             Wander(npc);
         }
 
-        if ((npc.enemiesInSight.Count != 0 || npc.enemiesInHearingRange.Count != 0) && npc.playerSmallSnowballCount > 0)
+        
+        return npc.actionList[npc.actionList.Count - 1];
+        /*if ((npc.enemiesInSight.Count != 0 || npc.enemiesInHearingRange.Count != 0) && npc.playerSmallSnowballCount > 0)
         {
             return npc.attackState;
         } else if (npc.collectablesInRange.Count > 0 && (npc.playerHealth < 80 || npc.playerStamina < 6))
@@ -39,7 +47,7 @@ public class WanderState : IAIState
         else
         {
             return npc.wanderState;
-        }
+        }*/
     }
 
     private void FindHidingSpot(UmbertoAINew npc)
